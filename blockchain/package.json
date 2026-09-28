@@ -1,7 +1,22 @@
 {
   "name": "blockchain",
   "version": "1.0.0",
+
+  "scripts": {
+    "chain": "hardhat node",
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+
+    "deploy:local": "hardhat compile && hardhat ignition deploy ignition/modules/TrustChainRegistry.ts --network localhost && hardhat run scripts/sync-deployment.ts --network localhost && hardhat run scripts/export-abi.ts --network localhost && hardhat run scripts/healthcheck.ts --network localhost",
+
+    "redeploy:local": "hardhat compile && hardhat ignition deploy ignition/modules/TrustChainRegistry.ts --network localhost --reset && hardhat run scripts/sync-deployment.ts --network localhost && hardhat run scripts/export-abi.ts --network localhost && hardhat run scripts/healthcheck.ts --network localhost",
+
+    "export:abi": "hardhat run scripts/export-abi.ts --network localhost",
+    "healthcheck": "hardhat run scripts/healthcheck.ts --network localhost"
+  },
+
   "type": "module",
+
   "devDependencies": {
     "@nomicfoundation/hardhat-ignition": "^3.1.8",
     "@nomicfoundation/hardhat-toolbox-viem": "^5.0.7",
@@ -11,6 +26,7 @@
     "typescript": "~6.0.3",
     "viem": "^2.56.9"
   },
+
   "dependencies": {
     "@openzeppelin/contracts": "^5.6.1"
   }
