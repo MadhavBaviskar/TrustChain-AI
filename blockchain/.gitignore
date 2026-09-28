@@ -32,3 +32,6 @@
 
 # Hardhat Ignition local deployment state
 /ignition/deployments/
+
+# Local deployment manifests
+/deployments/development.json
